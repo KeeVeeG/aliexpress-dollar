@@ -1,0 +1,35 @@
+{
+  "name": "aliexpress-dollar",
+  "version": "1.0.0",
+  "description": "График курса доллара AliExpress, Биржи и Центрального банка Российской Федерации",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index",
+    "start:dev": "nodemon index",
+    "format": "prettier --write ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeeVeeG/aliexpress-dollar.git"
+  },
+  "keywords": [
+    "dollar",
+    "aliexpress",
+    "bank-of-Russia"
+  ],
+  "author": "KeeVeeG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KeeVeeG/aliexpress-dollar/issues"
+  },
+  "homepage": "https://github.com/KeeVeeG/aliexpress-dollar#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "fast-xml-parser": "^4.0.8",
+    "jsdom": "^20.0.0",
+    "pg": "^8.7.3",
+    "puppeteer": "^15.3.1"
+  }
+}

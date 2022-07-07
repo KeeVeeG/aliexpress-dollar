@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Курс доллара AliExpress</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Курс доллара AliExpress, Биржи и Центрального банка Российской Федерации" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+  </head>
+  <body>
+    <div>
+      <canvas id="chart" style="width: 80vw; height: 500px"></canvas>
+    </div>
+    <script>
+      moment.locale('ru-RU')
+      new Chart(document.getElementById('chart'), {
+        type: 'line',
+        data: {
+          datasets: [
+            {
+              label: 'AliExpress ( aliCurrent ₽ )',
+              borderColor: '#ffa03e',
+              backgroundColor: '#ffd0a0',
+              data: 'aliData',
+            },
+            {
+              label: 'Биржа ( excCurrent ₽ )',
+              borderColor: '#F02E2E',
+              backgroundColor: '#F57E7E',
+              data: 'excData',
+            },
+            {
+              label: 'ЦБ РФ ( cbCurrent ₽ )',
+              borderColor: '#33a3ec',
+              backgroundColor: '#9bd1f5',
+              data: 'cbData',
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'day',
+              },
+            },
+          },
+        },
+      })
+    </script>
+    <style></style>
+  </body>
+</html>
