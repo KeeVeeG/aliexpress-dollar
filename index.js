@@ -109,7 +109,7 @@ app.get('/update', async (req, res) => {
       const [cb, ali, exc] = await Promise.all([getCb(), getAli(), getExc()])
       const last = (await db.query('SELECT * FROM data ORDER BY id DESC LIMIT 1')).rows[0]
       const value = [new Date().toISOString(), cb, ali, exc]
-      if (last?.cb !== cb || last?.ali !== ali || last?.exc !== exc)
+      if (last?.cb != cb || last?.ali != ali || last?.exc != exc)
         await db.query('INSERT INTO data (date, cb, ali, exc) VALUES ($1, $2, $3, $4)', value)
       res.send(value)
     } finally {
