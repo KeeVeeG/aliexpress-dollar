@@ -7,8 +7,26 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <h1>Курс доллара AliExpress</h1>
+    <div class="legends">
+      <div class="legend" id="ali">
+        <h2>AliExpress</h2>
+        <h3 class="price">aliCurrent ₽</h3>
+      </div>
+      <div class="legend" id="exc">
+        <h2>Биржа</h2>
+        <h3 class="price">excCurrent ₽</h3>
+      </div>
+      <div class="legend" id="cb">
+        <h2>ЦБ РФ</h2>
+        <h3 class="price">cbCurrent ₽</h3>
+      </div>
+    </div>
     <div>
       <canvas id="chart" style="width: 80vw; height: 500px"></canvas>
     </div>
@@ -19,19 +37,19 @@
         data: {
           datasets: [
             {
-              label: 'AliExpress ( aliCurrent ₽ )',
+              label: 'AliExpress',
               borderColor: '#ffa03e',
               backgroundColor: '#ffd0a0',
               data: 'aliData',
             },
             {
-              label: 'Биржа ( excCurrent ₽ )',
+              label: 'Биржа',
               borderColor: '#F02E2E',
               backgroundColor: '#F57E7E',
               data: 'excData',
             },
             {
-              label: 'ЦБ РФ ( cbCurrent ₽ )',
+              label: 'ЦБ РФ',
               borderColor: '#33a3ec',
               backgroundColor: '#9bd1f5',
               data: 'cbData',
@@ -47,9 +65,59 @@
               },
             },
           },
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
         },
       })
     </script>
-    <style></style>
+    <style>
+      * {
+        font-family: 'Play', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+        margin: 10px;
+      }
+      .legends {
+        display: flex;
+        margin: 20px 10px;
+        justify-content: center;
+      }
+      .legend {
+        width: 140px;
+        position: relative;
+        text-align: right;
+        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 4px;
+        padding: 2px 15px 2px 50px;
+        margin: 0 15px;
+        flex-shrink: 0;
+      }
+      .legend::before {
+        content: '';
+        position: absolute;
+        border-radius: 4px;
+        left: 0;
+        top: 0;
+        transform: translateX(30%) translateY(-30%);
+        width: 30px;
+        height: 30px;
+      }
+      #ali::before {
+        background-color: #ffa03e;
+      }
+      #exc::before {
+        background-color: #f02e2e;
+      }
+      #cb::before {
+        background-color: #33a3ec;
+      }
+    </style>
   </body>
 </html>
